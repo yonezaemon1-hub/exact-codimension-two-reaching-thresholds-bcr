@@ -1,0 +1,37 @@
+NO.22 — ZENODO ARCHIVAL RECORDS
+
+Title:
+Exact Codimension-Two Reaching Thresholds for Binary Completely Reachable Automata
+
+GitHub release:
+v1.0.0
+
+Frozen GitHub commit:
+d49f59bbf0911c3b76dc1f99da82262cc032380c
+
+Paper DOI:
+10.5281/zenodo.23050727
+
+Paper record:
+https://zenodo.org/records/23050727
+
+Software DOI:
+10.5281/zenodo.23050737
+
+Software record:
+https://zenodo.org/records/23050737
+
+Paper PDF SHA-256:
+90311e218615a273356a797c4c7bfaa2b9cbeb2d3d92e38837e368e490a57916
+
+n=8 certificate:
+normalized defect-one maps = 141120
+completely reachable = 136704
+maximum codimension-two threshold = 17
+extremal automata = 68
+
+Publication date:
+2026-09-30
+
+Status:
+PUBLISHED

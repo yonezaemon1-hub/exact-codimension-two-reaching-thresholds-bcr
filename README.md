@@ -67,6 +67,14 @@ The earlier exploratory status note that still called the formula a conjecture i
 - F. Gonze and R. M. Jungers, *On Completely Reachable Automata and Subset Reachability*, DLT 2018.
 - Y. Zhu, *Around Don's Conjecture for Binary Completely Reachable Automata*, DLT 2024.
 
+## Archival records
+
+- Paper DOI: `10.5281/zenodo.23050727`
+- Software DOI: `10.5281/zenodo.23050737`
+- GitHub release: `v1.0.0`
+- Frozen release commit: `d49f59bbf0911c3b76dc1f99da82262cc032380c`
+- Paper PDF SHA-256: `90311e218615a273356a797c4c7bfaa2b9cbeb2d3d92e38837e368e490a57916`
+
 ## Licenses
 
 - Paper: CC BY 4.0.

@@ -1,0 +1,57 @@
+name: Refresh No.22 Main Manifest
+
+on:
+  push:
+    paths:
+      - '.github/workflows/refresh_main_manifest.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - name: Regenerate stable main manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          files=(
+            ".zenodo.json"
+            "CITATION.cff"
+            "LICENSE"
+            "LICENSE_PAPER.txt"
+            "PUBLICATION_AUDIT.md"
+            "README.md"
+            "ZENODO_RECORD.txt"
+            "Yonezu_2026_Exact_Codim2_BCR.pdf"
+            "exact_bcr_codim2.py"
+            "paper.zenodo.json"
+            "research/exact_bcr_codim2.py"
+            "verification_n8.json"
+            "verify_n8.py"
+            "verify_n8_output.txt"
+          )
+          : > SHA256SUMS.txt
+          for f in "${files[@]}"; do sha256sum "$f" >> SHA256SUMS.txt; done
+          sha256sum -c SHA256SUMS.txt
+          python verify_n8.py --n 8 --json verification_n8.regenerated.json
+          cmp verification_n8.json verification_n8.regenerated.json
+          rm verification_n8.regenerated.json
+          echo PASS_MAIN_MANIFEST=true
+      - name: Commit refreshed manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add SHA256SUMS.txt
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh post-publication manifest [skip ci]'
+            git push origin HEAD:main
+          fi

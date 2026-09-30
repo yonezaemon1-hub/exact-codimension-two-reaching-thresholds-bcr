@@ -1,0 +1,108 @@
+name: Publish No.22 v1.0.1 Manifest Correction
+
+on:
+  push:
+    paths:
+      - '.github/workflows/publish_v101_manifest_correction.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Verify scientific artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s Yonezu_2026_Exact_Codim2_BCR.pdf
+          echo "90311e218615a273356a797c4c7bfaa2b9cbeb2d3d92e38837e368e490a57916  Yonezu_2026_Exact_Codim2_BCR.pdf" | sha256sum -c -
+          python verify_n8.py --n 8 --json verification_n8.regenerated.json
+          cmp verification_n8.json verification_n8.regenerated.json
+          rm verification_n8.regenerated.json
+          echo PASS_SCIENTIFIC_ARTIFACTS=true
+
+      - name: Regenerate stable manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          files=(
+            ".zenodo.json"
+            "CITATION.cff"
+            "LICENSE"
+            "LICENSE_PAPER.txt"
+            "PUBLICATION_AUDIT.md"
+            "README.md"
+            "ZENODO_RECORD.txt"
+            "Yonezu_2026_Exact_Codim2_BCR.pdf"
+            "exact_bcr_codim2.py"
+            "paper.zenodo.json"
+            "research/exact_bcr_codim2.py"
+            "verification_n8.json"
+            "verify_n8.py"
+            "verify_n8_output.txt"
+          )
+          : > SHA256SUMS.txt
+          for f in "${files[@]}"; do
+            test -f "$f"
+            sha256sum "$f" >> SHA256SUMS.txt
+          done
+          sha256sum -c SHA256SUMS.txt
+          echo PASS_STABLE_MANIFEST=true
+
+      - name: Commit corrected manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add SHA256SUMS.txt
+          if ! git diff --cached --quiet; then
+            git commit -m 'Fix release manifest for v1.0.1 [skip ci]'
+            git push origin HEAD:main
+          fi
+          echo "RELEASE_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+
+      - name: Create v1.0.1 correction release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view v1.0.1 >/dev/null 2>&1; then
+            echo RELEASE_ALREADY_EXISTS=true
+            exit 0
+          fi
+          cat > release_notes.md <<'EOF'
+          No.22 v1.0.1 — manifest-only correction.
+
+          Scientific content is unchanged from v1.0.0:
+          - paper PDF unchanged (SHA-256 90311e218615a273356a797c4c7bfaa2b9cbeb2d3d92e38837e368e490a57916)
+          - exact theorem unchanged
+          - n=8 verifier unchanged
+          - frozen verification result unchanged
+
+          Correction:
+          v1.0.0 SHA256SUMS.txt contained two stale checksum entries for GitHub Actions workflow files.
+          All scientific and archival artifact entries in v1.0.0 were correct. v1.0.1 regenerates the
+          manifest over stable publication artifacts only and intentionally excludes CI workflow files.
+          EOF
+          gh release create v1.0.1             --target "$RELEASE_SHA"             --title 'v1.0.1 — Manifest Correction'             --notes-file release_notes.md             Yonezu_2026_Exact_Codim2_BCR.pdf             verification_n8.json             verify_n8.py             SHA256SUMS.txt             CITATION.cff             ZENODO_RECORD.txt
+
+      - name: Audit frozen v1.0.1
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --tags --force
+          git checkout --detach v1.0.1
+          sha256sum -c SHA256SUMS.txt
+          python verify_n8.py --n 8 --json verification_n8.regenerated.json
+          cmp verification_n8.json verification_n8.regenerated.json
+          echo PASS_V101_FROZEN_AUDIT=true

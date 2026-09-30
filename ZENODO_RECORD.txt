@@ -4,10 +4,10 @@ Title:
 Exact Codimension-Two Reaching Thresholds for Binary Completely Reachable Automata
 
 GitHub release:
-v1.0.0
+v1.0.1 (manifest-only correction; scientific content unchanged)
 
-Frozen GitHub commit:
-d49f59bbf0911c3b76dc1f99da82262cc032380c
+Frozen GitHub v1.0.1 commit:
+8b149d3a892469aed2db8aab1f35b485929236f4
 
 Paper DOI:
 10.5281/zenodo.23050727
@@ -15,11 +15,20 @@ Paper DOI:
 Paper record:
 https://zenodo.org/records/23050727
 
-Software DOI:
+Software DOI (current v1.0.1):
+10.5281/zenodo.23050788
+
+Software record (current v1.0.1):
+https://zenodo.org/records/23050788
+
+Previous Software DOI (v1.0.0):
 10.5281/zenodo.23050737
 
-Software record:
+Previous Software record (v1.0.0):
 https://zenodo.org/records/23050737
+
+Software v1.0.1 source ZIP SHA-256:
+e1cae5d8b68ac0cb833d444d647b9564e2d0ea0a6274975f31e72d8fe21ff005
 
 Paper PDF SHA-256:
 90311e218615a273356a797c4c7bfaa2b9cbeb2d3d92e38837e368e490a57916

@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite the paper and software record."
+title: "Exact Codimension-Two Reaching Thresholds for Binary Completely Reachable Automata"
+type: software
+version: "1.0.0"
+date-released: 2026-09-30
+authors:
+  - family-names: "Yonezu"
+    given-names: "Ryutaro"
+url: "https://github.com/yonezaemon1-hub/exact-codimension-two-reaching-thresholds-bcr"
+license: MIT

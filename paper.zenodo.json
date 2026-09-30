@@ -1,0 +1,26 @@
+{
+  "creators": [
+    {"name": "Yonezu, Ryutaro"}
+  ],
+  "title": "Exact Codimension-Two Reaching Thresholds for Binary Completely Reachable Automata",
+  "description": "Preprint proving the exact worst-case reaching threshold of (n-2)-subsets in n-state binary completely reachable automata for every n >= 4, with an exhaustive finite certificate for the n=8 boundary case.",
+  "access_right": "open",
+  "keywords": [
+    "finite automata",
+    "completely reachable automata",
+    "subset reachability",
+    "synchronization"
+  ],
+  "license": "cc-by-4.0",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "language": "eng",
+  "publication_date": "2026-09-30",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/yonezaemon1-hub/exact-codimension-two-reaching-thresholds-bcr/releases/tag/v1.0.0",
+      "relation": "isSupplementedBy",
+      "scheme": "url"
+    }
+  ]
+}

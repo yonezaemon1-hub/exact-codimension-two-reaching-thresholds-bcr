@@ -1,0 +1,41 @@
+{
+  "completely_reachable": 136704,
+  "extremal_automata": 68,
+  "first_extremal_witness": {
+    "a": [
+      5,
+      2,
+      3,
+      6,
+      4,
+      4,
+      7,
+      1
+    ],
+    "distance": 17,
+    "target_mask": 119,
+    "target_states": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6
+    ]
+  },
+  "histogram": {
+    "10": 12439,
+    "11": 42972,
+    "12": 43337,
+    "13": 23722,
+    "14": 9362,
+    "15": 3577,
+    "16": 937,
+    "17": 68,
+    "9": 290
+  },
+  "maximum_codimension_two_threshold": 17,
+  "n": 8,
+  "normalized_defect_one_maps": 141120
+}
+PASS_N8_EXACT_CERTIFICATE

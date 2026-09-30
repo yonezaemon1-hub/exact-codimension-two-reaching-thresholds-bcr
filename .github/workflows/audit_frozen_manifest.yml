@@ -1,0 +1,22 @@
+name: Audit Frozen v1.0.0 Manifest
+
+on:
+  push:
+    paths:
+      - '.github/workflows/audit_frozen_manifest.yml'
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v1.0.0
+          fetch-depth: 1
+      - name: Verify every frozen manifest entry
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha256sum -c SHA256SUMS.txt
+          echo PASS_FROZEN_MANIFEST_ALL=true

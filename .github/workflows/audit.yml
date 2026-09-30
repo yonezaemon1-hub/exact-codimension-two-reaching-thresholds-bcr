@@ -1,0 +1,32 @@
+name: Audit No.22
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require frozen PDF
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s Yonezu_2026_Exact_Codim2_BCR.pdf
+      - name: Run exact n=8 certificate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python verify_n8.py --n 8 --json verification_n8.regenerated.json
+          cmp verification_n8.json verification_n8.regenerated.json
+      - name: Verify frozen hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep 'Yonezu_2026_Exact_Codim2_BCR.pdf' SHA256SUMS.txt | sha256sum -c -
+          grep 'verify_n8.py' SHA256SUMS.txt | sha256sum -c -
+          grep 'verification_n8.json' SHA256SUMS.txt | sha256sum -c -
+          echo PASS_NO22_AUDIT=true

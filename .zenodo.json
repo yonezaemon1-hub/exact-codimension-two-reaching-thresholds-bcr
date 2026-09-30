@@ -1,10 +1,12 @@
 {
   "creators": [
-    {"name": "Yonezu, Ryutaro"}
+    {
+      "name": "Yonezu, Ryutaro"
+    }
   ],
   "title": "Exact Codimension-Two Reaching Thresholds for Binary Completely Reachable Automata — Reproducibility Package",
-  "description": "Reproducibility package for the exact codimension-two reaching threshold theorem in binary completely reachable automata. Includes the frozen preprint, a standard-library exhaustive n=8 verifier, frozen verification output, and integrity hashes.",
-  "version": "1.0.0",
+  "description": "Reproducibility package for the exact codimension-two reaching threshold theorem in binary completely reachable automata. Version 1.0.1 is a manifest-only correction: the paper PDF, theorem, n=8 verifier, and frozen verification result are unchanged from v1.0.0; the integrity manifest covers stable publication artifacts and excludes mutable CI workflow files.",
+  "version": "1.0.1",
   "access_right": "open",
   "keywords": [
     "finite automata",
@@ -19,9 +21,14 @@
   "publication_date": "2026-09-30",
   "related_identifiers": [
     {
-      "identifier": "https://github.com/yonezaemon1-hub/exact-codimension-two-reaching-thresholds-bcr/releases/tag/v1.0.0",
+      "identifier": "https://github.com/yonezaemon1-hub/exact-codimension-two-reaching-thresholds-bcr/releases/tag/v1.0.1",
       "relation": "isSupplementTo",
       "scheme": "url"
+    },
+    {
+      "identifier": "10.5281/zenodo.23050727",
+      "relation": "isSupplementTo",
+      "scheme": "doi"
     }
   ]
 }

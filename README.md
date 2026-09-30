@@ -70,9 +70,10 @@ The earlier exploratory status note that still called the formula a conjecture i
 ## Archival records
 
 - Paper DOI: `10.5281/zenodo.23050727`
-- Software DOI: `10.5281/zenodo.23050737`
-- GitHub release: `v1.0.0`
-- Frozen release commit: `d49f59bbf0911c3b76dc1f99da82262cc032380c`
+- Software DOI (current v1.0.1): `10.5281/zenodo.23050788`
+- Previous Software DOI (v1.0.0): `10.5281/zenodo.23050737`
+- GitHub release: `v1.0.1` (manifest-only correction; scientific content unchanged)
+- Frozen v1.0.1 release commit: `8b149d3a892469aed2db8aab1f35b485929236f4`
 - Paper PDF SHA-256: `90311e218615a273356a797c4c7bfaa2b9cbeb2d3d92e38837e368e490a57916`
 
 ## Licenses

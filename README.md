@@ -80,3 +80,7 @@ The earlier exploratory status note that still called the formula a conjecture i
 
 - Paper: CC BY 4.0.
 - Code and repository documentation: MIT.
+
+## Research inquiries
+
+For questions about this research, reproduction, or collaboration, contact Yonezu Research Lab: [yonezaemon1+research@gmail.com](mailto:yonezaemon1+research@gmail.com).
